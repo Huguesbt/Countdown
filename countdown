@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+folder="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+if [[ -f "$folder/.env" ]]; then . "$folder/.env"; fi
+
+if [[ ! -f "$folder/function.sh" ]]; then echo "Missing functions' file";exit0; fi
+. "$folder/functions.sh";
+
+re='^[0-9]+$'
+if [[ -z "$1" ]]; then echo "Missing time"; exit;
+elif [[ $1 =~ $re ]] ; then seconds=$1;
+else seconds=$(getSecondsFromTimestamp "$1")
+fi
+
+if [[ -z "$2" ]]; then msg="countdown end"; else msg="$2"; fi
+
+countdown "$seconds" "$msg"
+exit;
