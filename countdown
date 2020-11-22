@@ -12,7 +12,15 @@ elif [[ $1 =~ $re ]] ; then seconds=$1;
 else seconds=$(getSecondsFromTimestamp "$1")
 fi
 
+command=""
 if [[ -z "$2" ]]; then msg="countdown end"; else msg="$2"; fi
+if [[ -n "$3" ]]; then command="${*:3}"; fi
 
 countdown "$seconds" "$msg"
+
+if [[ "$command" != "" ]]; then
+  echo "$command"
+  $command
+fi
+
 exit;
