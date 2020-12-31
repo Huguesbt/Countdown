@@ -9,7 +9,7 @@ if [[ ! -f "$folder/functions.sh" ]]; then echo "Missing functions file";exit0; 
 re='^[0-9]+$'
 if [[ -z "$1" ]]; then echo "Missing time"; exit;
 elif [[ $1 =~ $re ]] ; then seconds=$1;
-else seconds=$(getSecondsFromTimestamp "$1")
+else seconds=$(getSecondsFromTime "$1")
 fi
 
 command=""

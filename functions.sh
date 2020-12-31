@@ -7,6 +7,13 @@ getSecondsFromTimestamp () {
     echo $(($endTimestamp-$nowTimestamp))
 }
 
+getSecondsFromTime () {
+    endTimestamp=$(date --date="$1" +"%s")
+    nowTimestamp=$(date +"%s")
+
+    echo $(($endTimestamp-$nowTimestamp))
+}
+
 countdown() {
     i=$1
     msg=$2
