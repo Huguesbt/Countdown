@@ -2,4 +2,4 @@
 
 folder="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 screen -dmS "${2//[[:blank:]]/}" "$folder/countdown" "${@:1}"
-screen -rd
+screen -ls
